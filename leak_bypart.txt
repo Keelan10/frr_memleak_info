@@ -3,7 +3,7 @@ Direct leaks track
 
 Part 0:
 cpath_new (Will be fixed by PR #14239)
-ls_parse_prefix
+ls_parse_prefix (Will be fixed by PR #14257)
 nhrp_peer_create
 
 Part 1:
@@ -36,5 +36,5 @@ ospf6_lsa_alloc
 ospf_area_range_new
 ospf_external_aggregator_new
 ospf_spf_vertex_parent_copy
-vertex_parent_new
+vertex_parent_new (Will be fixed by PR #14240)
 
