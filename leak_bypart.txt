@@ -2,7 +2,6 @@ Direct leaks track
 ==========================
 
 Part 0:
-ls_parse_prefix (Will be fixed by PR #14257)
 nhrp_peer_create
 
 Part 1:
@@ -12,7 +11,7 @@ Part 2:
 [Nothing]
 
 Part 3:
-prefix_copy
+prefix_copy (PR #14372)
 
 Part 4:
 [Nothing]
@@ -30,9 +29,10 @@ Part 8:
 [Nothing]
 
 Part 9:
-ospf6_lsa_alloc (Will be fixed by PR #14262)
-ospf_area_range_new (Will be fixed by PR #14261)
-ospf_external_aggregator_new
+ospf_area_range_new (PR #14261)
+ospf_external_aggregator_new (PR #14356)
 ospf_spf_vertex_parent_copy
-vertex_parent_new (Will be fixed by PR #14240)
+pbr_nht_set_seq_nhg (PR #14237)
+prefix_new (PR #14237)
+vertex_parent_new (PR #14240)
 
