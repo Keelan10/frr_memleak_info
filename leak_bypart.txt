@@ -11,28 +11,25 @@ Part 2:
 [Nothing]
 
 Part 3:
-prefix_copy (PR #14372)
+prefix_copy (PR #14539)
 
 Part 4:
 [Nothing]
 
 Part 5:
-[Nothing]
+aspath_dup
 
 Part 6:
 ecommunity_dup
 
 Part 7:
-[Nothing]
+nexthop_group_new (PR #14550)
+vty_show_ip_route
 
 Part 8:
 [Nothing]
 
 Part 9:
-ospf_area_range_new (PR #14261)
-ospf_external_aggregator_new (PR #14356)
 ospf_spf_vertex_parent_copy
-pbr_nht_set_seq_nhg (PR #14237)
-prefix_new (PR #14237)
-vertex_parent_new (PR #14240)
+vertex_parent_new
 
