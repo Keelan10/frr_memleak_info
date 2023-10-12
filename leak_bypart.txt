@@ -2,7 +2,7 @@ Direct leaks track
 ==========================
 
 Part 0:
-nhrp_peer_create
+nhrp_peer_create (PR #14579)
 
 Part 1:
 [Nothing]
@@ -11,7 +11,7 @@ Part 2:
 [Nothing]
 
 Part 3:
-prefix_copy (PR #14539)
+prefix_copy (PR #14372 superseded by #14539 - got closed tho, basically the API is broken)
 
 Part 4:
 [Nothing]
@@ -20,10 +20,9 @@ Part 5:
 aspath_dup
 
 Part 6:
-ecommunity_dup
+ecommunity_dup (PR #14583)
 
 Part 7:
-nexthop_group_new (PR #14550)
 vty_show_ip_route
 
 Part 8:
