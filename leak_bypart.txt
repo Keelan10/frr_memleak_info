@@ -2,7 +2,7 @@ Direct leaks track
 ==========================
 
 Part 0:
-nhrp_peer_create (PR #14579)
+[Nothing]
 
 Part 1:
 [Nothing]
@@ -20,7 +20,7 @@ Part 5:
 aspath_dup
 
 Part 6:
-ecommunity_dup (PR #14583)
+[Nothing]
 
 Part 7:
 vty_show_ip_route
