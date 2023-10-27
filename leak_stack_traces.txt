@@ -1,0 +1,174 @@
+Part 3:
+prefix_copy (https://ci1.netdef.org/browse/FRR-PULLREQ3-424/artifact/ASANP3/AddressSanitizerError/AddressSanitzer.txt)
+
+***********************************************************************************
+Address Sanitizer Error detected in bgp_flowspec.test_bgp_flowspec_topo/r1.asan.bgpd.3518
+
+=================================================================
+==3518==ERROR: LeakSanitizer: detected memory leaks
+
+Direct leak of 56 byte(s) in 2 object(s) allocated from:
+    #0 0x7f3c944c9d28 in __interceptor_calloc (/usr/lib/x86_64-linux-gnu/libasan.so.4+0xded28)
+    #1 0x7f3c93ec7b98 in qcalloc lib/memory.c:105
+    #2 0x7f3c93f0d263 in prefix_copy lib/prefix.c:346
+    #3 0x7f3c93f55554 in route_node_get lib/table.c:274
+    #4 0x55e4158f8b10 in bgp_node_get bgpd/bgp_table.h:236
+    #5 0x55e4158f8b10 in bgp_afi_node_get bgpd/bgp_route.c:147
+    #6 0x55e415911d9c in bgp_update bgpd/bgp_route.c:4193
+    #7 0x55e415ad76c8 in bgp_nlri_parse_flowspec bgpd/bgp_flowspec.c:193
+    #8 0x55e4158c8256 in bgp_nlri_parse bgpd/bgp_packet.c:352
+    #9 0x55e4158ca7a5 in bgp_update_receive bgpd/bgp_packet.c:2407
+    #10 0x55e4158d8157 in bgp_process_packet bgpd/bgp_packet.c:3882
+    #11 0x7f3c93f67bfe in event_call lib/event.c:1970
+    #12 0x7f3c93eaae37 in frr_run lib/libfrr.c:1214
+    #13 0x55e4157ccd4b in main bgpd/bgp_main.c:510
+    #14 0x7f3c92eedc86 in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x21c86)
+***********************************************************************************
+
+
+Part 5:
+aspath_dup (https://ci1.netdef.org/browse/FRR-PULLREQ3-424/artifact/ASAN5/AddressSanitizerError/AddressSanitzer.txt)
+
+***********************************************************************************
+Address Sanitizer Error detected in bgp_remove_private_as_route_map.test_bgp_remove_private_as_route_map/r2.asan.bgpd.25838
+
+=================================================================
+==25838==ERROR: LeakSanitizer: detected memory leaks
+
+Direct leak of 80 byte(s) in 2 object(s) allocated from:
+    #0 0x7f19d9670d28 in __interceptor_calloc (/usr/lib/x86_64-linux-gnu/libasan.so.4+0xded28)
+    #1 0x7f19d906eb98 in qcalloc lib/memory.c:105
+    #2 0x5578076a920a in aspath_dup bgpd/bgp_aspath.c:689
+    #3 0x55780753e09e in route_set_aspath_prepend bgpd/bgp_routemap.c:2283
+    #4 0x7f19d90c7c70 in route_map_apply_ext lib/routemap.c:2690
+    #5 0x5578074f16cb in subgroup_announce_check bgpd/bgp_route.c:2434
+    #6 0x5578074f308e in subgroup_process_announce_selected bgpd/bgp_route.c:2990
+    #7 0x557807560435 in subgroup_announce_table bgpd/bgp_updgrp_adv.c:765
+    #8 0x5578075608c7 in subgroup_announce_route bgpd/bgp_updgrp_adv.c:818
+    #9 0x557807560a9c in subgroup_coalesce_timer bgpd/bgp_updgrp_adv.c:368
+    #10 0x7f19d910ebfe in event_call lib/event.c:1970
+    #11 0x7f19d9051e37 in frr_run lib/libfrr.c:1214
+    #12 0x5578073b3d4b in main bgpd/bgp_main.c:510
+    #13 0x7f19d8094c86 in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x21c86)
+
+Direct leak of 80 byte(s) in 2 object(s) allocated from:
+    #0 0x7f19d9670d28 in __interceptor_calloc (/usr/lib/x86_64-linux-gnu/libasan.so.4+0xded28)
+    #1 0x7f19d906eb98 in qcalloc lib/memory.c:105
+    #2 0x5578076a920a in aspath_dup bgpd/bgp_aspath.c:689
+    #3 0x55780753e09e in route_set_aspath_prepend bgpd/bgp_routemap.c:2283
+    #4 0x7f19d90c7c70 in route_map_apply_ext lib/routemap.c:2690
+    #5 0x5578074f16cb in subgroup_announce_check bgpd/bgp_route.c:2434
+    #6 0x5578074f308e in subgroup_process_announce_selected bgpd/bgp_route.c:2990
+    #7 0x557807560435 in subgroup_announce_table bgpd/bgp_updgrp_adv.c:765
+    #8 0x5578075608c7 in subgroup_announce_route bgpd/bgp_updgrp_adv.c:818
+    #9 0x557807551450 in updgrp_policy_update_walkcb bgpd/bgp_updgrp.c:1685
+    #10 0x55780754f04e in update_group_walkcb bgpd/bgp_updgrp.c:1721
+    #11 0x7f19d90362ca in hash_walk lib/hash.c:270
+    #12 0x55780755a654 in update_group_af_walk bgpd/bgp_updgrp.c:2062
+    #13 0x55780755ac98 in update_group_walk bgpd/bgp_updgrp.c:2071
+    #14 0x55780755ae18 in update_group_policy_update bgpd/bgp_updgrp.c:1769
+    #15 0x557807541ec4 in bgp_route_map_process_update bgpd/bgp_routemap.c:4501
+    #16 0x557807543426 in bgp_route_map_process_update_cb bgpd/bgp_routemap.c:4683
+    #17 0x7f19d90c90be in route_map_walk_update_list lib/routemap.c:870
+    #18 0x5578075293a6 in bgp_route_map_update_timer bgpd/bgp_routemap.c:4695
+    #19 0x7f19d910ebfe in event_call lib/event.c:1970
+    #20 0x7f19d9051e37 in frr_run lib/libfrr.c:1214
+    #21 0x5578073b3d4b in main bgpd/bgp_main.c:510
+    #22 0x7f19d8094c86 in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x21c86)
+***********************************************************************************
+
+Part 7:
+vty_show_ip_route (https://ci1.netdef.org/browse/FRR-PULLREQ3-424/artifact/ASAN7/AddressSanitizerError/AddressSanitzer.txt)
+
+***********************************************************************************
+Address Sanitizer Error detected in zebra_seg6local_route.test_zebra_seg6local_route/r1.asan.zebra.8031
+
+=================================================================
+==8031==ERROR: LeakSanitizer: detected memory leaks
+
+Direct leak of 288 byte(s) in 4 object(s) allocated from:
+    #0 0x7fa540c57d28 in __interceptor_calloc (/usr/lib/x86_64-linux-gnu/libasan.so.4+0xded28)
+    #1 0x7fa54000be6f in json_object_new_array (/lib/x86_64-linux-gnu/libjson-c.so.3+0x3e6f)
+    #2 0x55ba28f1910b in vty_show_ip_route zebra/zebra_vty.c:704
+    #3 0x55ba28f1c813 in vty_show_ip_route_detail_json zebra/zebra_vty.c:848
+    #4 0x55ba28f2f222 in show_route_detail_magic zebra/zebra_vty.c:2022
+    #5 0x55ba28f2f222 in show_route_detail zebra/zebra_vty_clippy.c:757
+    #6 0x7fa5405d8e31 in cmd_execute_command_real lib/command.c:978
+    #7 0x7fa5405d92f5 in cmd_execute_command lib/command.c:1036
+    #8 0x7fa5405d9774 in cmd_execute lib/command.c:1203
+    #9 0x7fa540701ebf in vty_command lib/vty.c:591
+    #10 0x7fa54070236a in vty_execute lib/vty.c:1354
+    #11 0x7fa54070ac34 in vtysh_read lib/vty.c:2362
+    #12 0x7fa5406f5bfe in event_call lib/event.c:1970
+    #13 0x7fa540638e37 in frr_run lib/libfrr.c:1214
+    #14 0x55ba28e0dfe7 in main zebra/main.c:486
+    #15 0x7fa53fa19c86 in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x21c86)
+***********************************************************************************
+
+Part 9:
+ospf_spf_vertex_parent_copy
+vertex_parent_new
+(https://ci1.netdef.org/browse/FRR-PULLREQ3-424/artifact/ASAN9/AddressSanitizerError/AddressSanitzer.txt)
+
+***********************************************************************************
+Address Sanitizer Error detected in ospf_tilfa_topo1.test_ospf_tilfa_topo1/rt1.asan.ospfd.32082
+
+=================================================================
+==32082==ERROR: LeakSanitizer: detected memory leaks
+
+Direct leak of 128 byte(s) in 4 object(s) allocated from:
+    #0 0x7f4299390d28 in __interceptor_calloc (/usr/lib/x86_64-linux-gnu/libasan.so.4+0xded28)
+    #1 0x7f4298d8eb98 in qcalloc lib/memory.c:105
+    #2 0x55b1ea751ead in ospf_spf_vertex_parent_copy ospfd/ospf_spf.c:350
+    #3 0x55b1ea751ead in ospf_spf_copy ospfd/ospf_spf.c:391
+    #4 0x55b1ea75235e in ospf_spf_copy ospfd/ospf_spf.c:408
+    #5 0x55b1ea75bcac in ospf_ti_lfa_generate_p_space ospfd/ospf_ti_lfa.c:787
+    #6 0x55b1ea75c746 in ospf_ti_lfa_generate_p_spaces ospfd/ospf_ti_lfa.c:923
+    #7 0x55b1ea75c97a in ospf_ti_lfa_compute ospfd/ospf_ti_lfa.c:1101
+    #8 0x55b1ea754819 in ospf_spf_calculate_area ospfd/ospf_spf.c:1811
+    #9 0x55b1ea7549a3 in ospf_spf_calculate_areas ospfd/ospf_spf.c:1840
+    #10 0x55b1ea754d66 in ospf_spf_calculate_schedule_worker ospfd/ospf_spf.c:1871
+    #11 0x7f4298e2ebfe in event_call lib/event.c:1970
+    #12 0x7f4298d71e37 in frr_run lib/libfrr.c:1214
+    #13 0x55b1ea6eace9 in main ospfd/ospf_main.c:251
+    #14 0x7f4298389c86 in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x21c86)
+
+Direct leak of 128 byte(s) in 4 object(s) allocated from:
+    #0 0x7f4299390d28 in __interceptor_calloc (/usr/lib/x86_64-linux-gnu/libasan.so.4+0xded28)
+    #1 0x7f4298d8eb98 in qcalloc lib/memory.c:105
+    #2 0x55b1ea751ead in ospf_spf_vertex_parent_copy ospfd/ospf_spf.c:350
+    #3 0x55b1ea751ead in ospf_spf_copy ospfd/ospf_spf.c:391
+    #4 0x55b1ea75235e in ospf_spf_copy ospfd/ospf_spf.c:408
+    #5 0x55b1ea75235e in ospf_spf_copy ospfd/ospf_spf.c:408
+    #6 0x55b1ea75bcac in ospf_ti_lfa_generate_p_space ospfd/ospf_ti_lfa.c:787
+    #7 0x55b1ea75c746 in ospf_ti_lfa_generate_p_spaces ospfd/ospf_ti_lfa.c:923
+    #8 0x55b1ea75c97a in ospf_ti_lfa_compute ospfd/ospf_ti_lfa.c:1101
+    #9 0x55b1ea754819 in ospf_spf_calculate_area ospfd/ospf_spf.c:1811
+    #10 0x55b1ea7549a3 in ospf_spf_calculate_areas ospfd/ospf_spf.c:1840
+    #11 0x55b1ea754d66 in ospf_spf_calculate_schedule_worker ospfd/ospf_spf.c:1871
+    #12 0x7f4298e2ebfe in event_call lib/event.c:1970
+    #13 0x7f4298d71e37 in frr_run lib/libfrr.c:1214
+    #14 0x55b1ea6eace9 in main ospfd/ospf_main.c:251
+    #15 0x7f4298389c86 in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x21c86)
+
+Direct leak of 64 byte(s) in 2 object(s) allocated from:
+    #0 0x7f4299390b40 in __interceptor_malloc (/usr/lib/x86_64-linux-gnu/libasan.so.4+0xdeb40)
+    #1 0x7f4298d8e8b8 in qmalloc lib/memory.c:100
+    #2 0x55b1ea74fad0 in vertex_parent_new ospfd/ospf_spf.c:157
+    #3 0x55b1ea74fad0 in ospf_spf_add_parent ospfd/ospf_spf.c:732
+    #4 0x55b1ea750938 in ospf_nexthop_calculation ospfd/ospf_spf.c:974
+    #5 0x55b1ea753e39 in ospf_spf_next ospfd/ospf_spf.c:1484
+    #6 0x55b1ea753e39 in ospf_spf_calculate ospfd/ospf_spf.c:1751
+    #7 0x55b1ea758abf in ospf_ti_lfa_generate_q_spaces ospfd/ospf_ti_lfa.c:673
+    #8 0x55b1ea758e39 in ospf_ti_lfa_generate_q_spaces ospfd/ospf_ti_lfa.c:648
+    #9 0x55b1ea75bf06 in ospf_ti_lfa_generate_p_space ospfd/ospf_ti_lfa.c:812
+    #10 0x55b1ea75c3e6 in ospf_ti_lfa_generate_p_spaces ospfd/ospf_ti_lfa.c:874
+    #11 0x55b1ea75c97a in ospf_ti_lfa_compute ospfd/ospf_ti_lfa.c:1101
+    #12 0x55b1ea754819 in ospf_spf_calculate_area ospfd/ospf_spf.c:1811
+    #13 0x55b1ea7549a3 in ospf_spf_calculate_areas ospfd/ospf_spf.c:1840
+    #14 0x55b1ea754d66 in ospf_spf_calculate_schedule_worker ospfd/ospf_spf.c:1871
+    #15 0x7f4298e2ebfe in event_call lib/event.c:1970
+    #16 0x7f4298d71e37 in frr_run lib/libfrr.c:1214
+    #17 0x55b1ea6eace9 in main ospfd/ospf_main.c:251
+    #18 0x7f4298389c86 in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x21c86)
+***********************************************************************************

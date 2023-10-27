@@ -11,7 +11,9 @@ Part 2:
 [Nothing]
 
 Part 3:
-prefix_copy (PR #14372 superseded by #14539 - got closed tho, basically the API is broken)
+prefix_copy (PR #14372 fixes it, got superseded by #14539 which in turn got closed)
+Note: Basically the API is broken and they prefer to address the root issue of the broken API
+rather than merely addressing that one occurence of memory leak.
 
 Part 4:
 [Nothing]
