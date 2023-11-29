@@ -2,13 +2,16 @@ Direct leaks track
 ==========================
 
 Part 0:
-[Nothing]
+tc_class_alloc_intern (PR #14908)
+tc_filter_alloc_intern (PR #14908)
+tc_qdisc_alloc_intern (PR #14908)
 
 Part 1:
 [Nothing]
 
 Part 2:
-[Nothing]
+bgp_confederation_peers_add (PR #14906)
+qstrdup (PR #14906)
 
 Part 3:
 prefix_copy (PR #14372 fixes it, got superseded by #14539 which in turn got closed)
@@ -22,7 +25,8 @@ Part 5:
 [Nothing]
 
 Part 6:
-[Nothing]
+sid_register (PR #14907)
+srv6_locator_chunk_alloc (PR #14907)
 
 Part 7:
 [Nothing]
